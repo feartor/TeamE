@@ -28,10 +28,7 @@ public class EmpGUI extends javax.swing.JFrame {
         
         // set form to center of screen
         this.setLocationRelativeTo(null);
-        
-        //Calculate Total portfolio Value
-        calculateTotalValue();
-        
+                
     }
 
     /**
@@ -55,11 +52,9 @@ public class EmpGUI extends javax.swing.JFrame {
         lblID = new javax.swing.JLabel();
         btnAddEmp = new javax.swing.JButton();
         pnlEmpList = new javax.swing.JPanel();
-        scrStocks = new javax.swing.JScrollPane();
-        lstStocks = new javax.swing.JList<>();
-        lblProfitLoss = new javax.swing.JLabel();
-        btnRemoveStock = new javax.swing.JButton();
-        lblTotalValue = new javax.swing.JLabel();
+        scrEmp = new javax.swing.JScrollPane();
+        lstEmp = new javax.swing.JList<>();
+        btnRemoveEmp = new javax.swing.JButton();
         mnbMainMenu = new javax.swing.JMenuBar();
         mniFile = new javax.swing.JMenu();
         mniOpen = new javax.swing.JMenuItem();
@@ -68,7 +63,7 @@ public class EmpGUI extends javax.swing.JFrame {
         mniExit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Stocks4U App");
+        setTitle("Rocket Systems App");
 
         lblnameF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblnameF.setText("First Name:");
@@ -88,7 +83,7 @@ public class EmpGUI extends javax.swing.JFrame {
         txtID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         lblID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblID.setText("Current Price:");
+        lblID.setText("ID:");
 
         btnAddEmp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddEmp.setText("Add Employee");
@@ -146,67 +141,56 @@ public class EmpGUI extends javax.swing.JFrame {
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(btnAddEmp)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        jtpMainTabs.addTab("Add Stock", pnlAddEmp);
+        jtpMainTabs.addTab("Add Employee", pnlAddEmp);
 
-        lstStocks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lstStocks.setModel(model);
-        lstStocks.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstEmp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lstEmp.setModel(model);
+        lstEmp.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstStocksValueChanged(evt);
+                lstEmpValueChanged(evt);
             }
         });
-        scrStocks.setViewportView(lstStocks);
+        scrEmp.setViewportView(lstEmp);
 
-        lblProfitLoss.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblProfitLoss.setText("Profit / Loss");
-
-        btnRemoveStock.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnRemoveStock.setText("Remove Stock");
-        btnRemoveStock.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveEmp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnRemoveEmp.setText("Remove Employee");
+        btnRemoveEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveStockActionPerformed(evt);
+                btnRemoveEmpActionPerformed(evt);
             }
         });
-
-        lblTotalValue.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblTotalValue.setText("Total Value: ");
 
         javax.swing.GroupLayout pnlEmpListLayout = new javax.swing.GroupLayout(pnlEmpList);
         pnlEmpList.setLayout(pnlEmpListLayout);
         pnlEmpListLayout.setHorizontalGroup(
             pnlEmpListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEmpListLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlEmpListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(scrStocks)
-                    .addGroup(pnlEmpListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblTotalValue, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pnlEmpListLayout.createSequentialGroup()
-                            .addComponent(lblProfitLoss, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(46, 46, 46)
-                            .addComponent(btnRemoveStock))))
+                .addGroup(pnlEmpListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEmpListLayout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(btnRemoveEmp))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEmpListLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(scrEmp)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlEmpListLayout.setVerticalGroup(
             pnlEmpListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEmpListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrStocks, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(pnlEmpListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRemoveStock)
-                    .addComponent(lblProfitLoss, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTotalValue, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(btnRemoveEmp)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jtpMainTabs.addTab("List", pnlEmpList);
 
         mniFile.setText("File");
+        mniFile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         mniOpen.setText("Open");
         mniOpen.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +232,7 @@ public class EmpGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtpMainTabs)
+            .addComponent(jtpMainTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
         );
 
         pack();
@@ -257,71 +241,41 @@ public class EmpGUI extends javax.swing.JFrame {
     private void btnAddEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmpActionPerformed
         //Verify that the feilds are complete
         if(txtnameF.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Stock name is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "First Name is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
             txtnameF.requestFocus();
               return;
         }
         
         if(txtnameL.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Quantity is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Last Name is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
             txtnameL.requestFocus();
               return;
         }
         
         if(txtDepartment.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Purchase Price is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Department is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
             txtDepartment.requestFocus();
               return;
         }
         
         if(txtID.getText().equals("")){
-            JOptionPane.showMessageDialog(this, "Current Price is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ID is required.", "Error. Missing Information",JOptionPane.ERROR_MESSAGE);
             txtID.requestFocus();
               return;
         }
-        
-        double quantity = 0.0;
-        try {
-            quantity = Double.parseDouble(txtnameL.getText());
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Invalid Input Please use numbers only.","Error. Invalid data",JOptionPane.ERROR_MESSAGE);
-            txtnameL.requestFocus();
-            return;
-        }
-        
-        double purchasePrice = 0.0;
-        try {
-            purchasePrice = Double.parseDouble(txtDepartment.getText());
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Invalid Input Please use numbers only.","Error. Invalid data",JOptionPane.ERROR_MESSAGE);
-            txtDepartment.requestFocus();
-            return;
-        }
-        
-        double currentPrice = 0.0;
-        try {
-            currentPrice = Double.parseDouble(txtID.getText());
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Invalid Input Please use numbers only.","Error. Invalid data",JOptionPane.ERROR_MESSAGE);
-            txtID.requestFocus();
-            return;
-        }
         // get input
-        String stockName = txtnameF.getText();
-        //double quantity = Double.parseDouble(txtQuantity.getText());
-        //double purchasePrice = Double.parseDouble(txtPurchasePrice.getText());
-        //double currentPrice = Double.parseDouble(txtCurrentPrice.getText());
-        
+        String nameF = txtnameF.getText();
+        String nameL = txtnameL.getText();
+        String department = txtDepartment.getText();
+        String ID = txtID.getText();
+       
         //create the Emp object
-        Emp stk = new Emp(stockName, quantity, purchasePrice, currentPrice);
+        Emp emp = new Emp(nameF, nameL, department, ID);
         
         //add the Emp object to the JList
-        model.addElement(stk);
-        
-        //Update the totalValue label
-        calculateTotalValue();
-        
-        // reset form for the next stock
+        model.addElement(emp);
+       
+        // reset form for the next emp
         txtnameF.setText("");
         txtnameL.setText("");
         txtDepartment.setText("");
@@ -330,36 +284,22 @@ public class EmpGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAddEmpActionPerformed
 
-    private void lstStocksValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstStocksValueChanged
+    private void lstEmpValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEmpValueChanged
         // get stock and who the current profit/loss
-        Emp stk = lstStocks.getSelectedValue();
-        
-        if(stk != null){
-            double profitLoss = stk.getProfitLoss();
-            DecimalFormat fmt = new DecimalFormat("#,##0.00");
-            if( profitLoss > 0.0)
-                lblProfitLoss.setText("Profit of " + fmt.format(profitLoss));
-            else if (profitLoss < 0.0)
-                lblProfitLoss.setText("Loss of " + fmt.format(profitLoss));
-            else
-                lblProfitLoss.setText("Break-even");
-        }
-    }//GEN-LAST:event_lstStocksValueChanged
+        Emp emp = lstEmp.getSelectedValue();
+      
+    }//GEN-LAST:event_lstEmpValueChanged
 
-    private void btnRemoveStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveStockActionPerformed
+    private void btnRemoveEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveEmpActionPerformed
         // get stock position
-        int position = lstStocks.getSelectedIndex();
+        int position = lstEmp.getSelectedIndex();
         
         // if selected, remove the stock
         if(position >= 0){
             model.remove(position);
-            lblProfitLoss.setText("Profit / Loss");
-            
-            //Update the totalValue label
-        calculateTotalValue();
         }
         
-    }//GEN-LAST:event_btnRemoveStockActionPerformed
+    }//GEN-LAST:event_btnRemoveEmpActionPerformed
 
     private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
         System.exit(0);
@@ -377,8 +317,8 @@ public class EmpGUI extends javax.swing.JFrame {
     
     for(int i =0; i < model.size(); i++){
         
-        Emp stk = model.elementAt(i);
-        data.add(stk);
+        Emp emp = model.elementAt(i);
+        data.add(emp);
     }
     outToFile.saveData(data);
     
@@ -399,12 +339,10 @@ public class EmpGUI extends javax.swing.JFrame {
         model.clear();
         for (int i = 0; i < data.size(); i++)
         {
-            Emp stk = data.get(i);
-            model.addElement(stk);
+            Emp emp = data.get(i);
+            model.addElement(emp);
         }
-        //update total value
-        calculateTotalValue();
-        
+                
     }//GEN-LAST:event_mniOpenActionPerformed
 
     /**
@@ -445,16 +383,14 @@ public class EmpGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddEmp;
-    private javax.swing.JButton btnRemoveStock;
+    private javax.swing.JButton btnRemoveEmp;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTabbedPane jtpMainTabs;
     private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblProfitLoss;
     private javax.swing.JLabel lblPurchasePrice;
-    private javax.swing.JLabel lblTotalValue;
     private javax.swing.JLabel lblnameF;
     private javax.swing.JLabel lblnameL;
-    private javax.swing.JList<Emp> lstStocks;
+    private javax.swing.JList<Emp> lstEmp;
     private javax.swing.JMenuBar mnbMainMenu;
     private javax.swing.JMenuItem mniExit;
     private javax.swing.JMenu mniFile;
@@ -462,25 +398,11 @@ public class EmpGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniSave;
     private javax.swing.JPanel pnlAddEmp;
     private javax.swing.JPanel pnlEmpList;
-    private javax.swing.JScrollPane scrStocks;
+    private javax.swing.JScrollPane scrEmp;
     private javax.swing.JTextField txtDepartment;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtnameF;
     private javax.swing.JTextField txtnameL;
     // End of variables declaration//GEN-END:variables
 
-    private void calculateTotalValue() {
-        double totalValue = 0.0;
-        
-        //go through each stock in portfolio and calculate total value.
-        for(int i = 0; i < model.size(); i++)
-        {
-            Emp stk = model.elementAt(i);
-            totalValue += stk.getCurrentPrice() * stk.getNumberOfShares();
-        }
-        
-        //show the total value
-        DecimalFormat fmt = new DecimalFormat("$#,##0.00");
-        lblTotalValue.setText("Total Value: " + fmt.format(totalValue));
-    }
 }
