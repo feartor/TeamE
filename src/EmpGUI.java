@@ -1,6 +1,9 @@
 
+import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -327,20 +330,24 @@ public class EmpGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_mniSaveActionPerformed
 
     private void mniOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniOpenActionPerformed
-        // get the file name
-        String fileName = JOptionPane.showInputDialog("Enter filename: ");
-        
-        //get data from the file
-        EmpIO inFromFile = new EmpIO(fileName);
-        
-        ArrayList<Emp> data = inFromFile.getData();
-        
-        //clear the model and copy new data
-        model.clear();
-        for (int i = 0; i < data.size(); i++)
-        {
-            Emp emp = data.get(i);
-            model.addElement(emp);
+        try {
+            // get the file name
+            String fileName = JOptionPane.showInputDialog("Enter filename: ");
+            
+            //get data from the file
+            EmpIO inFromFile = new EmpIO(fileName);
+            
+            ArrayList<Emp> data = inFromFile.getData();
+            
+            //clear the model and copy new data
+            model.clear();
+            for (int i = 0; i < data.size(); i++)
+            {
+                Emp emp = data.get(i);
+                model.addElement(emp);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(EmpGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
     }//GEN-LAST:event_mniOpenActionPerformed
