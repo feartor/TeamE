@@ -11,80 +11,64 @@
 public class Emp {
 
     //attributes
-    private String companyName;
-    private double numberOfShares;
-    private double purchasePrice;
-    private double currentPrice;
+    private String nameF;
+    private String nameL;
+    private String department;
+    private String ID;
 
     //constructors methods
     public Emp() {
-        companyName = "N/A";
-        numberOfShares = 0.0;
-        purchasePrice = 0.0;
-        currentPrice = 0.0;
+        nameF = "Unknown";
+        nameL = "Unknown";
+        department = "Unknown";
+        ID = "Unknown";
     }
 
     //paramaterized constructor
-    public Emp(String companyName, double numberOfShares, double purchasePrice, double currentPrice) {
-        this.setCompanyName(companyName);
-        this.setNumberOfShares(numberOfShares);
-        this.setPurchasePrice(purchasePrice);
-        this.setCurrentPrice(currentPrice);
+    public Emp(String nameF, String nameL, String department, String ID) {
+        this.setNameF(nameF);
+        this.setNameL(nameL);
+        this.setDepartment(department);
+        this.setID(ID);
     }
 
     //behaviors 
-    public double getProfitLoss() {
-        return numberOfShares * (currentPrice - purchasePrice);
-    }
-
     @Override
     public String toString() {
-        return companyName + ": " + this.numberOfShares + " shares.";
+        return nameL + ", " + nameF + ": " + this.department + " department.";
     }
 
     //get and set
-    public String getCompanyName() {
-        return companyName;
+    public String getNameF() {
+        return nameF;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setNameF(String nameF) {
+        this.nameF = nameF;
     }
 
-    public double getNumberOfShares() {
-        return numberOfShares;
+    public String getNameL() {
+        return nameL;
     }
 
-    public void setNumberOfShares(double numberOfShares) {
-        if (numberOfShares > 0) {
-            this.numberOfShares = numberOfShares;
-        } else {
-            this.numberOfShares = 0.0;
-        }
+    public void setNameL(String nameL) {
+        this.nameL = nameL;
     }
 
-    public double getPurchasePrice() {
-        return purchasePrice;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setPurchasePrice(double purchasePrice) {
-        if (purchasePrice > 0.0) {
-            this.purchasePrice = purchasePrice;
-        } else {
-            this.purchasePrice = 0.0;
-        }
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public double getCurrentPrice() {
-        return currentPrice;
+    public String getID() {
+        return ID;
     }
 
-    public void setCurrentPrice(double currentPrice) {
-        if (currentPrice > 0.0) {
-            this.currentPrice = currentPrice;
-        } else {
-            this.currentPrice = 0.0;
-        }
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
 }

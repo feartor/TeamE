@@ -25,7 +25,7 @@ public class EmpIO {
 
     //constructors
     public EmpIO() {
-        fileName = "Stocks.txt";
+        fileName = "test.txt";
     }
 
     public EmpIO(String fileName) {
@@ -51,14 +51,14 @@ public class EmpIO {
             {
                 // break the line into parts --
                 tokens = new StringTokenizer ( inputLine, ",");
-                String company = tokens.nextToken();
-                double shares = Double.parseDouble(tokens.nextToken());
-                double pPrice = Double.parseDouble (tokens.nextToken());
-                double cPrice = Double.parseDouble(tokens.nextToken());
+                String nameF = tokens.nextToken();
+                String nameL = tokens.nextToken();
+                String department = tokens.nextToken();
+                String ID = tokens.nextToken();
                 
                 //create a stock Object and add to ArrayList
-                Emp stk = new Emp(company,shares,pPrice,cPrice);
-                data.add(stk);
+                Emp emp = new Emp(nameF,nameL,department,ID);
+                data.add(emp);
                 
                 //read the next line
                 inputLine = inFile.readLine();
@@ -82,11 +82,11 @@ public class EmpIO {
             BufferedWriter outFile = new BufferedWriter(new FileWriter(fileName));
             //write the stocks by cycling through the data
             for (int i = 0; i < data.size(); i++) {
-                Emp stk = data.get(i);
-                outFile.write(stk.getCompanyName() + ',');
-                outFile.write("" + stk.getNumberOfShares() + ',');
-                outFile.write("" + stk.getPurchasePrice() + ',');
-                outFile.write("" + stk.getCurrentPrice());
+                Emp emp = data.get(i);
+                outFile.write(emp.getNameF() + ',');
+                outFile.write("" + emp.getNameL() + ',');
+                outFile.write("" + emp.getDepartment() + ',');
+                outFile.write("" + emp.getID());
                 outFile.newLine(); //Enter key to drop to next line
             }
 
@@ -106,7 +106,7 @@ public class EmpIO {
         if (fileName.length() > 0) {
             this.fileName = fileName;
         } else {
-            this.fileName = "Stocks.txt";
+            this.fileName = "test.txt";
         }
     }
 
